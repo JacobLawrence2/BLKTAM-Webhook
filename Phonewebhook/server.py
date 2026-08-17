@@ -54,6 +54,11 @@ def _check_secret(token: str | None, request: Request) -> None:
     raise HTTPException(status_code=401, detail="Invalid webhook secret")
 
 
+@app.get("/")
+def root() -> dict[str, str]:
+    return {"status": "ok", "health": "/health", "webhook": "/apollo/phone"}
+
+
 @app.get("/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
