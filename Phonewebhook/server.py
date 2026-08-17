@@ -55,16 +55,24 @@ def _check_secret(token: str | None, request: Request) -> None:
 
 
 @app.get("/")
+@app.get("/api")
 def root() -> dict[str, str]:
-    return {"status": "ok", "health": "/health", "webhook": "/apollo/phone"}
+    return {
+        "status": "ok",
+        "health": "/health",
+        "webhook": "/apollo/phone",
+    }
 
 
 @app.get("/health")
+@app.get("/api/health")
 def health() -> dict[str, str]:
     return {"status": "ok"}
 
 
 @app.post("/apollo/phone")
+@app.post("/api/apollo/phone")
+@app.post("/api/phone")
 async def apollo_phone(
     request: Request,
     token: str | None = Query(default=None),
