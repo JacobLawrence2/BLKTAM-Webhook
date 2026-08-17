@@ -1,11 +1,6 @@
 {
   "rewrites": [
-    { "source": "/apollo/phone", "destination": "/api/apollo/phone" },
+    { "source": "/apollo/phone", "destination": "/api/phone" },
     { "source": "/health", "destination": "/api/health" }
-  ],
-  "functions": {
-    "api/**/*.py": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }
